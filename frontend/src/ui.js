@@ -1,7 +1,3 @@
-// ui.js
-// Displays the drag-and-drop UI
-// --------------------------------------------------
-import React from 'react';
 import { useState, useRef, useCallback } from 'react';
 import ReactFlow, { Controls, Background, MiniMap } from 'reactflow';
 import { useStore } from './store';
@@ -15,6 +11,7 @@ import { VideoNode } from './nodes/VideoNode';
 import { AudioNode } from './nodes/AudioNode';
 import { MarkdownNode } from './nodes/MarkdownNode';
 import { CodeNode } from './nodes/CodeNode';
+import styled from 'styled-components';
 
 import 'reactflow/dist/style.css';
 
@@ -42,6 +39,12 @@ const selector = (state) => ({
   onConnect: state.onConnect,
 });
 
+const PipelineWrapper = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+`;
+
 export const PipelineUI = () => {
   const reactFlowWrapper = useRef(null);
   const [reactFlowInstance, setReactFlowInstance] = useState(null);
@@ -50,7 +53,7 @@ export const PipelineUI = () => {
   const onInit = useCallback((instance) => setReactFlowInstance(instance), []);
 
   return (
-    <div className="reactflow-wrapper" ref={reactFlowWrapper} style={{ width: '100%', height: '100%' }}>
+    <PipelineWrapper ref={reactFlowWrapper}>
       <ReactFlow
         nodes={nodes}
         edges={edges}
@@ -66,6 +69,6 @@ export const PipelineUI = () => {
         <Background gap={gridSize} />
         <MiniMap />
       </ReactFlow>
-    </div>
+    </PipelineWrapper>
   );
 };
