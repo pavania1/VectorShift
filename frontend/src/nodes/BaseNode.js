@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import React from 'react';
 import { Handle } from 'reactflow';
 
 export const BaseNode = ({ id, data, type, handles }) => {

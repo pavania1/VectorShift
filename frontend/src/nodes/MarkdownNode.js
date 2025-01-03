@@ -1,5 +1,5 @@
 // frontend/src/nodes/MarkdownNode.js
-
+import React from 'react';
 import { BaseNode } from './BaseNode';
 import { Position } from 'reactflow';
 

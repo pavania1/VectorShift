@@ -1,4 +1,5 @@
 // draggableNode.js
+import React from "react";
 
 export const DraggableNode = ({ type, label }) => {
     const onDragStart = (event, nodeType) => {
